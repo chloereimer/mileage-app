@@ -15,7 +15,9 @@
     </h:head>
     <h:body>
         
-        <h1>#{mileageApp.car.modelYear} #{mileageApp.car.make} #{mileageApp.car.model}</h1>
+        <h1>Car Mileage Application</h1>
+        
+        <h2>#{mileageApp.car.modelYear} #{mileageApp.car.make} #{mileageApp.car.model}</h2>
         
         <h:dataTable value="#{mileageApp.car.tripsList}" var="trip" class="pure-table">
             <h:column>
@@ -31,14 +33,26 @@
                 <h:outputText value ="#{trip.tripLength}" />
             </h:column>
             <h:column>
-                <f:facet name="header">Gas Used</f:facet>
+                <f:facet name="header">Gas Used (L)</f:facet>
                 <h:outputText value ="#{trip.gasUsed}" />
             </h:column>
             <h:column>
-                <f:facet name="header">Fuel Economy</f:facet>
-                <h:outputText value ="???" />
+                <f:facet name="header">Fuel Economy (L/100km)</f:facet>
+                <h:outputText value ="#{trip.fuelEconomy}">
+                    <f:convertNumber pattern="#0.00" />
+                </h:outputText>
             </h:column>
         </h:dataTable>
+        
+        <p>
+            <strong>
+                Average Fuel Economy:
+                <h:outputText value ="#{mileageApp.car.averageFuelEconomy}">
+                    <f:convertNumber pattern="#0.00" />
+                </h:outputText>
+                L/100km
+            </strong>
+        </p>
         
         <p>
             <h:link value="Back" outcome="index"></h:link>

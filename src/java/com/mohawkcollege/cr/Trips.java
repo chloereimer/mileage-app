@@ -109,6 +109,14 @@ public class Trips implements Serializable {
     public void setCarId(Cars carId) {
         this.carId = carId;
     }
+    
+    public int getTripLength(){
+        return mileageEnd - mileageStart;
+    }
+    
+    public float getFuelEconomy(){
+        return gasUsed / getTripLength() * 100;
+    }
 
     @Override
     public int hashCode() {

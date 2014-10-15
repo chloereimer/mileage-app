@@ -106,6 +106,19 @@ public class Cars implements Serializable {
     public void setModelYear(String modelYear) {
         this.modelYear = modelYear;
     }
+    
+    public float getAverageFuelEconomy(){
+        
+        int totalTripLength = 0;
+        float totalGasUsed  = 0;
+        
+        for ( Trips trip : getTripsList() ){
+            totalTripLength += trip.getTripLength();
+            totalGasUsed += trip.getGasUsed();
+        }
+        
+        return totalGasUsed / totalTripLength * 100;
+    }
 
     @XmlTransient
     public List<Trips> getTripsList() {
