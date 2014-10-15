@@ -65,11 +65,4 @@ public class MileageApp {
         this.car_id = car_id;
     }
     
-    public List<Trips> getTrips() {
-        // Note : You do not need to specify the query class
-        List<Trips> allTrips = (List<Trips>) (em.createNamedQuery("Trips.findAll").
-            getResultList());
-        return allTrips; 
-    }
-    
 }
