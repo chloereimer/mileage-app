@@ -25,7 +25,7 @@ public class MileageApp {
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
-    private String car_id;
+    private int car_id;
 
     /**
      * Creates a new instance of MileageApp
@@ -56,7 +56,12 @@ public class MileageApp {
         return allCars; 
     }
     
-    public void setCarId(String car_id){
+    public Cars getCar(){
+        Cars car = (Cars) (em.createNamedQuery("Cars.findById").setParameter( "id", car_id ).getSingleResult());
+        return car;
+    }
+    
+    public void setCarId(int car_id){
         this.car_id = car_id;
     }
     
