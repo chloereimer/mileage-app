@@ -1,12 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>COMP10072 - Lab#3 - Car/Mileage Application</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>Car Mileage Application</h1>
+         <h:dataTable value="#{mileageApp.cars}" var="car">
+            <h:column>
+              <f:facet name="header">Make</f:facet>
+              <h:outputText value ="#{car.make}" />
+            </h:column >
+          </h:dataTable>
     </h:body>
 </html>
-
