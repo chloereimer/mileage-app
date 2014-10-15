@@ -5,14 +5,38 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>COMP10072 - Lab#3 - Car/Mileage Application</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
+        <style>
+            body{
+                max-width: 68rem;
+                margin: auto;
+            }
+        </style>
     </h:head>
     <h:body>
         <h1>Car Mileage Application</h1>
-         <h:dataTable value="#{mileageApp.cars}" var="car">
+         <h:dataTable value="#{mileageApp.cars}" var="car" class="pure-table">
             <h:column>
               <f:facet name="header">Make</f:facet>
               <h:outputText value ="#{car.make}" />
             </h:column >
+            <h:column>
+              <f:facet name="header">Model</f:facet>
+              <h:outputText value ="#{car.model}" />
+            </h:column >
+            <h:column>
+              <f:facet name="header">Year</f:facet>
+              <h:outputText value ="#{car.modelYear}" />
+            </h:column >
+            <h:column>
+                <f:facet name="header">Details</f:facet>
+                <h:form>
+                    <h:commandLink action="mileagetable" >
+                        Details
+                        <f:setPropertyActionListener target="#{mileageApp.carId}" value="#{car.id}"></f:setPropertyActionListener>
+                    </h:commandLink>
+                </h:form>
+            </h:column>
           </h:dataTable>
     </h:body>
 </html>

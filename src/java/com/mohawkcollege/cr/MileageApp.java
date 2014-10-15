@@ -25,6 +25,7 @@ public class MileageApp {
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;
+    private String car_id;
 
     /**
      * Creates a new instance of MileageApp
@@ -53,6 +54,17 @@ public class MileageApp {
         List<Cars> allCars = (List<Cars>) (em.createNamedQuery("Cars.findAll").         
             getResultList());
         return allCars; 
+    }
+    
+    public void setCarId(String car_id){
+        this.car_id = car_id;
+    }
+    
+    public List<Trips> getTrips() {
+        // Note : You do not need to specify the query class
+        List<Trips> allTrips = (List<Trips>) (em.createNamedQuery("Trips.findAll").
+            getResultList());
+        return allTrips; 
     }
     
 }
